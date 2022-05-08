@@ -1,0 +1,57 @@
+<div class="container p-5">
+    <div class="row">
+        <div class="col-md-9 mt-2">
+            <div class="innerheader">
+                Add Inventory Items
+             </div>
+        </div>
+        <div class="col-md-3 mt-2">
+                <button type="button" class="btn btn-primary" routerLink="/manageInventory"> Manage Inventory</button>
+        </div>
+        <div class="col-md-12">
+            <div class="form-wrapper custom-card mt-3">
+                <form [formGroup]="Form" (ngSubmit)="onSubmit()" >
+                    <div class="form-group">
+                        <label>Name <span class="text-danger">*</span></label>
+                        <input type="text" formControlName="name" class="form-control" [ngClass]="{'is-invalid': ((submitted && controls.name.errors) || ((controls.name.touched || controls.name.dirty) && controls.name.errors))}">
+                        <div *ngIf="((submitted && controls.name.errors) || ((controls.name.touched || controls.name.dirty) && controls.name.errors))" class="invalid-feedback">
+                            <div *ngIf="controls.name.errors.required"> This field is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description <span class="text-danger">*</span></label>
+                        <input type="text" formControlName="description" class="form-control" [ngClass]="{'is-invalid': ((submitted && controls.description.errors) || ((controls.description.touched || controls.description.dirty) && controls.description.errors))}">
+                        <div *ngIf="((submitted && controls.description.errors) || ((controls.description.touched || controls.description.dirty) && controls.description.errors))" class="invalid-feedback">
+                            <div *ngIf="controls.description.errors.required"> This field is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Price <span class="text-danger">*</span></label>
+                        <input type="number" formControlName="price" class="form-control" [ngClass]="{'is-invalid': ((submitted && controls.price.errors) || ((controls.price.touched || controls.price.dirty) && controls.price.errors))}">
+                        <div *ngIf="((submitted && controls.price.errors) || ((controls.price.touched || controls.price.dirty) && controls.price.errors))" class="invalid-feedback">
+                            <div *ngIf="controls.price.errors.required"> This field is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Category <span class="text-danger">*</span></label>
+                        <input type="text" formControlName="category" class="form-control" [ngClass]="{'is-invalid': ((submitted && controls.category.errors) || ((controls.category.touched || controls.category.dirty) && controls.category.errors))}">
+                        <div *ngIf="((submitted && controls.category.errors) || ((controls.category.touched || controls.category.dirty) && controls.category.errors))" class="invalid-feedback">
+                            <div *ngIf="controls.category.errors.required"> This field is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity <span class="text-danger">*</span></label>
+                        <input type="number" formControlName="quantity" class="form-control" [ngClass]="{'is-invalid': ((submitted && controls.quantity.errors) || ((controls.quantity.touched || controls.quantity.dirty) && controls.quantity.errors))}">
+                        <div *ngIf="((submitted && controls.quantity.errors) || ((controls.quantity.touched || controls.quantity.dirty) && controls.quantity.errors))" class="invalid-feedback">
+                            <div *ngIf="controls.quantity.errors.required"> This field is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="file" name="image" formControlName="image" (change)="selectImage($event)" />
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
+            </div>       
+        </div>
+    </div>
+</div>

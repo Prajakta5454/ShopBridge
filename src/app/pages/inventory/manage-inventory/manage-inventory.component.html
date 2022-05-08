@@ -1,0 +1,64 @@
+<div class="container p-5">
+  <div class="row">
+    <div class="col-md-5">
+        <div class="innerheader">
+            Inventory Items
+        </div>
+        </div>
+        <div class="col-md-2 mt-2">
+            <select class="form-control" (change)="applySort(sortOption.value)" #sortOption>
+                <option value="" selected disabled>Sort Item</option>
+                <option value="default">Random Sorting</option>
+                <option value="latest">Newest Products</option>
+                <option value="price-down">Price: High to Low</option>
+                <option value="price-up">Price: Low to High</option>
+            </select>
+        </div>
+        <div class="col-md-3 mt-2">
+            <div class="input-group">
+                <input type="text" class="form-control srch" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder=" Search" >
+                <div class="input-group-append">
+                  <span class="input-group-text form-control srchicon"><i class="fas fa-search"></i> </span>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-2 mt-2">
+            <button type="button" class="btn btn-primary" routerLink="/addInventory"> Add Item</button>
+        </div>
+        <div class="col-md-12">
+     <div class="custom-card mt-3">
+        <div class="table-responsive">
+            <table id="mytable" class="table table-bordred table-striped">
+              <thead>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of allProducts | filter:searchText | paginate: { itemsPerPage: 5, currentPage: page }">
+                  <td>{{product.name}}</td>
+                  <td>{{product.description}}</td>
+                  <td>{{product.price |currency: 'INR'}}</td>
+                  <td><img class="img img-fluid img-preview" src="{{BaseUrl + product.imageUrl}}" onerror="this.onerror=null;this.src='assets/img/dummy.png';"> </td>
+                  <td>{{product.category}}</td>
+                  <td>{{product.quantity}}</td>
+                  <td>
+                      <button class="btn btn-outline-primary btn-xs" (click)="editProduct(product)"> <i class="fas fa-pen"></i></button>
+                  </td>
+                  <td>
+                    <button class="btn btn-outline-danger btn-xs" (click)="deleteProduct(product)"> <i class="fas fa-trash-alt"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+          </div>
+     </div>
+    </div>
+  </div>
+</div>

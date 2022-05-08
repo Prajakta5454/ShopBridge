@@ -1,0 +1,9 @@
+.inventory-pages{
+    background-color: #f7f7f7;
+}
+.navbar{
+    background-color: var(--custom-primary-color);
+}
+a{
+    color: #fff !important;
+}
