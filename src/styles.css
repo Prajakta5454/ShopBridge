@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
+.custom-card{
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.innerheader{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.custom-btn{
+    color: #fff;
+}
+
+:root {
+    --custom-primary-color: #4A154B;
+  }
